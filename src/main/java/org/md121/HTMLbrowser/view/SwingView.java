@@ -18,7 +18,7 @@ public class SwingView extends JFrame implements ViewInterface, HyperlinkListene
 
     private final Controller controller;
 
-    private final JTextField locationTextField = new JTextField(45);
+    private final JTextField locationTextField = new JTextField(65);
     private final JEditorPane webView = new JEditorPane();
     private double zoom = 1.0;
 
@@ -33,12 +33,14 @@ public class SwingView extends JFrame implements ViewInterface, HyperlinkListene
 //        setSize(1280, 520);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel buttonPanel = new JPanel();
+        setIconImage(Picture.ICON.getImageIcon().getImage());
 
-        JButton back    = new JButton("<");
-        JButton forward = new JButton(">");
-        JButton zoomIn  = new JButton("+");
-        JButton zoomOut = new JButton("-");
-        JButton refresh = new JButton("*");
+        MenuButton back     = new MenuButton(Picture.BACK);
+        MenuButton forward  = new MenuButton(Picture.FORWARD);
+        MenuButton zoomIn   = new MenuButton(Picture.ZOOMIN);
+        MenuButton zoomOut  = new MenuButton(Picture.ZOOMOUT);
+        MenuButton refresh  = new MenuButton(Picture.REFRESH);
+        MenuButton goButton = new MenuButton(Picture.GO);
 
         back.addActionListener(e -> back());
         forward.addActionListener(e->forward());
@@ -56,9 +58,11 @@ public class SwingView extends JFrame implements ViewInterface, HyperlinkListene
             }
         });
         buttonPanel.add(locationTextField);
+        locationTextField.setPreferredSize(new Dimension(600,30));
         locationTextField.setText(controller.getStartPage());
+        locationTextField.setFont( new Font( null, Font.PLAIN  , 14 ));
 
-        JButton goButton = new JButton("GO");
+
         goButton.addActionListener(e -> go());
         buttonPanel.add(goButton);
 
@@ -170,5 +174,10 @@ public class SwingView extends JFrame implements ViewInterface, HyperlinkListene
     private void setTextField( URL url ){
         locationTextField.setText( url.toString().replaceFirst("file:/" , "") );
     }
+
+//    public URL getImagePath() {
+//        return ClassLoader.getSystemResource(imagePath);
+//    }
+
 
 }

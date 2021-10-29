@@ -39,7 +39,7 @@ public class WebEngine implements Engine{
             previous = result;
             return result;
         }catch (EmptyStackException e){
-            printOperation("FORWARD EXCEPTION");
+//            printOperation("FORWARD EXCEPTION");
             return previous;
         }
     }
@@ -52,7 +52,7 @@ public class WebEngine implements Engine{
             previous = result;
             return result;
         }catch (EmptyStackException e){
-            printOperation("BACK EXCEPTION");
+//            printOperation("BACK EXCEPTION");
             return previous;
         }
     }
