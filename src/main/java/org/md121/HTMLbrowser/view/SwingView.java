@@ -103,7 +103,7 @@ public class SwingView extends JFrame implements ViewInterface, HyperlinkListene
             e.printStackTrace();
         }
 
-        System.out.println("refresh");
+//        System.out.println("refresh");
     }
 
     @Override
@@ -142,9 +142,9 @@ public class SwingView extends JFrame implements ViewInterface, HyperlinkListene
 
     private void showPage(URL pageUrl) {
         try {
-            System.out.println( "showPage : " + pageUrl);
-            System.out.println( "--------------------------------");
-            System.out.println();
+//            System.out.println( "showPage : " + pageUrl);
+//            System.out.println( "--------------------------------");
+//            System.out.println();
 
             webView.setPage(pageUrl);
         } catch (Exception e) {

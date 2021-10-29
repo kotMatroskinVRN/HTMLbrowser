@@ -95,7 +95,7 @@ public class WebEngine implements Engine{
                 result = "file:///"+ userDir + "/" + address;
             }
 
-            System.out.println("verifyUrl : " + result);
+//            System.out.println("verifyUrl : " + result);
 
             try {
                 return new URL(result);
@@ -113,9 +113,9 @@ public class WebEngine implements Engine{
             List<File> files;
             files = Arrays.asList(Objects.requireNonNull(file.listFiles(f -> f.getName().endsWith("html"))));
 
-            System.out.println();
-            System.out.println(files);
-            System.out.println();
+//            System.out.println();
+//            System.out.println(files);
+//            System.out.println();
 
             if(files.size()>0) {
                 String index = "index.html";
