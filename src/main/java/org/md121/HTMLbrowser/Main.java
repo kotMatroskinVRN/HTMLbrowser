@@ -13,12 +13,6 @@ public class Main {
 
     public static void main(String[] args) {
 
- //       if(args.length>0) Browser.setStartPage( args[0] );
-
-//        Browser browser = new Browser();
-//        browser.setVisible(true);
-
-
         Engine engine = new WebEngine();
         Controller controllerGUI = new WebController(engine);
         ViewInterface view = new SwingView(controllerGUI);

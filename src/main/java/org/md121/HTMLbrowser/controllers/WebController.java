@@ -6,7 +6,7 @@ import java.net.URL;
 
 public class WebController implements Controller  {
 
-    private Engine engine;
+    private final Engine engine;
     private URL currentURL ;
     private String startPage = "./";
 
@@ -35,20 +35,6 @@ public class WebController implements Controller  {
         return currentURL;
     }
 
-    @Override
-    public void refresh() {
-        engine.go(currentURL);
-    }
-
-    @Override
-    public void zoomIn() {
-
-    }
-
-    @Override
-    public void zoomOut() {
-
-    }
 
     @Override
     public URL getCurrentUrl() {

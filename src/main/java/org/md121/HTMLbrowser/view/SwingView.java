@@ -70,7 +70,6 @@ public class SwingView extends JFrame implements ViewInterface, HyperlinkListene
         webView.setEditable(false);
         webView.addHyperlinkListener(this);
         webView.setEditorKit(new LargeHTMLEditorKit());
-//        webView.getDocument().putProperty("ZOOM_FACTOR", new Double(1.5));
 
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(buttonPanel, BorderLayout.NORTH);
@@ -87,12 +86,6 @@ public class SwingView extends JFrame implements ViewInterface, HyperlinkListene
 
     @Override
     public void refresh() {
-//        controller.refresh();
-//        showPage( controller.getCurrentUrl() );
-//        setTextField(controller.getCurrentUrl());
-//        webView.repaint();
-
-
         try {
             URL url = new URL(controller.getCurrentUrl().toString());
             Document doc = webView.getDocument();
@@ -102,8 +95,6 @@ public class SwingView extends JFrame implements ViewInterface, HyperlinkListene
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-//        System.out.println("refresh");
     }
 
     @Override
@@ -142,10 +133,6 @@ public class SwingView extends JFrame implements ViewInterface, HyperlinkListene
 
     private void showPage(URL pageUrl) {
         try {
-//            System.out.println( "showPage : " + pageUrl);
-//            System.out.println( "--------------------------------");
-//            System.out.println();
-
             webView.setPage(pageUrl);
         } catch (Exception e) {
             System.out.println("Unable to load page");
@@ -172,12 +159,19 @@ public class SwingView extends JFrame implements ViewInterface, HyperlinkListene
     }
 
     private void setTextField( URL url ){
-        locationTextField.setText( url.toString().replaceFirst("file:/" , "") );
+        if(System.getProperty("os.name").startsWith("Linux")){
+            locationTextField.setText(
+                    url.toString().replaceFirst("file:/" , "/")
+                            .replaceAll("[/]+" , "/")
+            );
+        }
+        if(System.getProperty("os.name").startsWith("Win")){
+            locationTextField.setText(
+                    url.toString().replaceFirst("file:/" , "")
+                            .replaceAll("[/]+" , "/")
+            );
+        }
+
     }
-
-//    public URL getImagePath() {
-//        return ClassLoader.getSystemResource(imagePath);
-//    }
-
 
 }

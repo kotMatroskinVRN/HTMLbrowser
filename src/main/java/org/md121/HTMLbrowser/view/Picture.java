@@ -1,6 +1,8 @@
 package org.md121.HTMLbrowser.view;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -27,13 +29,16 @@ public enum Picture {
 
     private ImageIcon setImage(String resourceName){
         InputStream is = ClassLoader.getSystemResourceAsStream(resourceName);
-        byte[] bytes = new byte[0];
+
         try {
-            bytes = is.readAllBytes();
+            Image image = ImageIO.read(is);
+            return  new ImageIcon(image) ;
         } catch (IOException e) {
             e.printStackTrace();
+            return  null ;
         }
-        return  new ImageIcon(bytes) ;
+
+
 
 
     }
